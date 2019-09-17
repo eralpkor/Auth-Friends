@@ -44,7 +44,7 @@ const {inputs, handleInputChange, handleSubmit} = useSignUpForm();
             value={inputs.password}
             onChange={handleInputChange}
           />
-          <button type="submit" className="fadeIn fourth" value="Log In" >Submit</button>
+          <input type="submit" className="fadeIn fourth" value="Log In" />
         </form>
 
         <div id="formFooter">

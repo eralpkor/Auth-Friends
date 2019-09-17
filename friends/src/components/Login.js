@@ -1,20 +1,20 @@
 import React, {useState} from "react";
-
+import useSignUpForm from './CustomHook';
 import "./Login.css";
 
 const Login = () => {
-  const [state, setState] = useState({ credentials: {username: '', password: ''}});
+//   const [state, setState] = useState({});
 
-  function handleChange(e) {
-    const val = e.target.value;
-    setState(prevState => {
-      return {
-      ...prevState,
-       [e.target.name]: val, 
-      }
-    });
-    console.log(state)
-  }
+//   function handleChange(e) {
+//     const val = e.target.value;
+//     e.persist();
+//     setState(state => ({
+//       ...state,
+//        [e.target.name]: val}));
+//     console.log(state)
+//   }
+
+const {inputs, handleInputChange, handleSubmit} = useSignUpForm();
 
   return (
     <div className="wrapper fadeInDown">
@@ -25,15 +25,15 @@ const Login = () => {
         <div className="fadeIn first">
         </div>
 
-        <form >
+        <form onSubmit={handleSubmit}>
           <input
             type="text"
             id="login"
             className="fadeIn second"
             name="username"
             placeholder="login"
-            value={state.credentials.username}
-            onChange={handleChange}
+            value={inputs.username}
+            onChange={handleInputChange}
           />
           <input
             type="password"
@@ -41,8 +41,10 @@ const Login = () => {
             className="fadeIn third"
             name="password"
             placeholder="password"
+            value={inputs.password}
+            onChange={handleInputChange}
           />
-          <input type="submit" className="fadeIn fourth" value="Log In" />
+          <button type="submit" className="fadeIn fourth" value="Log In" >Submit</button>
         </form>
 
         <div id="formFooter">

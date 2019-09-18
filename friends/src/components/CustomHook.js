@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import { axiosWithAuth } from '../utils/axiosWithAuth';
+import { Redirect } from 'react-router-dom';
 
-const useSignUpForm = callback => {
+const useSignUpForm = (props) => {
   const [inputs, setInputs] = useState({});
 
   const handleSubmit = event => {
@@ -11,10 +12,15 @@ const useSignUpForm = callback => {
       axiosWithAuth()
       .post('/login', inputs)
       .then(res => {
-        localStorage.setItem('token', res.data.payload)
+        localStorage.setItem('token', res.data.payload);
+        props.history.push('/friends')
       })
+      .catch(err => console.log(err))
     }
   };
+
+  // if (localStorage.getItem('token')) return <Redirect to='friendslist' />
+
   const handleInputChange = event => {
     event.persist();
     setInputs(inputs => ({

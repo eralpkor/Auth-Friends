@@ -48,7 +48,7 @@ const {inputs, handleInputChange, handleSubmit} = useSignUpForm();
         </form>
 
         <div id="formFooter">
-          <a className="underlineHover" href="#">
+          <a className="underlineHover" >
             Forgot Password?
           </a>
         </div>

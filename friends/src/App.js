@@ -5,6 +5,7 @@ import Login from "./components/Login";
 
 import "./App.css";
 import PrivateRoute from "./components/PrivateRoute";
+import FriendsList from "./components/FriendsList";
 
 function App() {
   return (
@@ -15,15 +16,13 @@ function App() {
             <Link to="/login">Login</Link>
           </li>
           <li>
-            <Link to="/protected">Secret Page</Link>
+            <Link to="/friends">Secret Page</Link>
           </li>
         </ul>
         <div className='form-container'>
           <Switch>
-            <PrivateRoute exact path="/protected">
-              <Route path="/login" component={Login} />
-              <Route component={Login} />
-            </PrivateRoute>
+          <Route path="/login" component={Login} />
+            <PrivateRoute path="/friends" component={FriendsList} />
           </Switch>
         </div>
       </div>

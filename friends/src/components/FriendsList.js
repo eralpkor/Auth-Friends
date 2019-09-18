@@ -25,6 +25,15 @@ export default function FriendsList(props) {
       .catch(err => console.log(err));
   };
 
+  const removeFriend = id  => {
+    const friend = [...friends];
+    const deletedFriend = friend.filter(f => f.id !== id)
+    axiosWithAuth()
+      .delete(`/friends/${id}`)
+      .then(res => console.log(res.data.id))
+      .catch(err => console.log(err));
+  };
+
   return (
     <div>
       <AddNewFriend />
@@ -33,10 +42,13 @@ export default function FriendsList(props) {
         <Grid container columns={3}>
           {friends.length ? (
             friends.map(friend => {
-              return <FriendCard
+              return (
+              <FriendCard
               key={friend.id}
               friend={friend}
-              />;
+              
+              />
+              )
             })
           ) : (
             <Circle />

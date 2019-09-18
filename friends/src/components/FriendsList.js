@@ -25,14 +25,9 @@ export default function FriendsList(props) {
       .catch(err => console.log(err));
   };
 
-  const removeFriend = id  => {
-    const friend = [...friends];
-    const deletedFriend = friend.filter(f => f.id !== id)
-    axiosWithAuth()
-      .delete(`/friends/${id}`)
-      .then(res => console.log(res.data.id))
-      .catch(err => console.log(err));
-  };
+  function removeFriend() {
+    alert("Friends are forever!");
+  }
 
   return (
     <div>
@@ -43,12 +38,12 @@ export default function FriendsList(props) {
           {friends.length ? (
             friends.map(friend => {
               return (
-              <FriendCard
-              key={friend.id}
-              friend={friend}
-              
-              />
-              )
+                <FriendCard
+                  key={friend.id}
+                  friend={friend}
+                  remove={removeFriend}
+                />
+              );
             })
           ) : (
             <Circle />
@@ -58,3 +53,18 @@ export default function FriendsList(props) {
     </div>
   );
 }
+
+
+
+  // const removeFriend = id  => {
+  //   const friend = [...friends];
+  //   const deletedFriend = friend.filter(f => f.id !== id)
+  //   setFriends(deletedFriend)
+  //   axiosWithAuth()
+  //     .delete(`/friends/${id}`)
+  //     .then(res => {
+  //       setFriends(res.data)
+  //     })
+  //     .then(res => console.log(res.data.id))
+  //     .catch(err => console.log(err));
+  // };

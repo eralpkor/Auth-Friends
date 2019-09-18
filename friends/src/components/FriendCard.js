@@ -31,7 +31,7 @@ export default function FriendCard(props) {
         </Card.Content>
         <Card.Content extra>
           <Button basic color="orange" content="Delete"
-          onClick={deleteFriend}
+          onClick={props.remove}
            />
         </Card.Content>
       </Card>
